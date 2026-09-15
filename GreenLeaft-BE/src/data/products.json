@@ -1,17 +1,5 @@
 [
   {
-    "id": "prod-1789463297755",
-    "name": "Test Trà Búp Ô Long",
-    "category": "Trà & Thảo Mộc",
-    "price": 120000,
-    "stock": 10,
-    "description": "Trà thử nghiệm",
-    "imageUrl": "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=600&q=80",
-    "rating": 5,
-    "isFeatured": false,
-    "createdAt": "2026-09-15T09:08:17.755Z"
-  },
-  {
     "id": "prod-1",
     "name": "Bột Trà Xanh Matcha Uji Hữu Cơ",
     "category": "Trà & Thảo Mộc",

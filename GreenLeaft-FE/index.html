@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GreenLeaf Shop - Quản Lý Sản Phẩm Hữu Cơ & Sống Xanh</title>
+  <meta name="description" content="Hệ thống quản lý sản phẩm thông minh cho GreenLeaf Shop - Cửa hàng sản phẩm hữu cơ, cây kiểng và lối sống xanh.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Header / Navigation -->
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <div class="brand">
+        <div class="brand-logo">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+            <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">GreenLeaf</span>
+          <span class="brand-subtitle">Organic & Eco Life</span>
+        </div>
+      </div>
+
+      <div class="nav-actions">
+        <div class="status-indicator">
+          <span class="status-dot"></span>
+          <span id="apiStatusText">Máy chủ: Đang kết nối...</span>
+        </div>
+        <button id="btnOpenAddModal" class="btn btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          Thêm Sản Phẩm Mới
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container main-content">
+    <!-- Hero & Stats Overview -->
+    <section class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon icon-emerald">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+          </svg>
+        </div>
+        <div class="stat-info">
+          <span class="stat-label">Tổng sản phẩm</span>
+          <span class="stat-value" id="statTotalCount">0</span>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon icon-teal">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+        </div>
+        <div class="stat-info">
+          <span class="stat-label">Còn hàng</span>
+          <span class="stat-value" id="statInStock">0</span>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon icon-amber">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+        </div>
+        <div class="stat-info">
+          <span class="stat-label">Hết hàng</span>
+          <span class="stat-value" id="statOutOfStock">0</span>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon icon-indigo">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="12" y1="1" x2="12" y2="23"></line>
+            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+          </svg>
+        </div>
+        <div class="stat-info">
+          <span class="stat-label">Tổng giá trị tồn</span>
+          <span class="stat-value highlight" id="statTotalValue">0 ₫</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Toolbar & Filter Area -->
+    <section class="toolbar-section">
+      <div class="search-sort-bar">
+        <!-- Search -->
+        <div class="search-wrapper">
+          <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="searchInput" placeholder="Tìm theo tên sản phẩm, công dụng, mô tả...">
+          <button id="btnClearSearch" class="btn-clear" title="Xóa tìm kiếm">&times;</button>
+        </div>
+
+        <!-- Stock Filter -->
+        <div class="select-wrapper">
+          <select id="stockFilter">
+            <option value="all">Tất cả tình trạng</option>
+            <option value="in-stock">Còn hàng</option>
+            <option value="out-of-stock">Hết hàng</option>
+          </select>
+        </div>
+
+        <!-- Sort Select -->
+        <div class="select-wrapper">
+          <select id="sortSelect">
+            <option value="newest">Mới cập nhật nhất</option>
+            <option value="price-asc">Giá: Thấp đến Cao</option>
+            <option value="price-desc">Giá: Cao đến Thấp</option>
+            <option value="name-asc">Tên: A đến Z</option>
+            <option value="stock-desc">Tồn kho nhiều nhất</option>
+          </select>
+        </div>
+
+        <!-- View Toggle -->
+        <div class="view-toggle">
+          <button id="viewGridBtn" class="toggle-btn active" title="Dạng lưới thẻ">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="7" height="7"></rect>
+              <rect x="14" y="3" width="7" height="7"></rect>
+              <rect x="14" y="14" width="7" height="7"></rect>
+              <rect x="3" y="14" width="7" height="7"></rect>
+            </svg>
+          </button>
+          <button id="viewTableBtn" class="toggle-btn" title="Dạng danh sách bảng">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="8" y1="6" x2="21" y2="6"></line>
+              <line x1="8" y1="12" x2="21" y2="12"></line>
+              <line x1="8" y1="18" x2="21" y2="18"></line>
+              <line x1="3" y1="6" x2="3.01" y2="6"></line>
+              <line x1="3" y1="12" x2="3.01" y2="12"></line>
+              <line x1="3" y1="18" x2="3.01" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div class="category-pills" id="categoryPills">
+        <button class="pill active" data-category="all">Tất cả</button>
+        <!-- Dynamic categories injected by JS -->
+      </div>
+    </section>
+
+    <!-- Products Catalog -->
+    <section class="catalog-section">
+      <!-- Loading Skeleton -->
+      <div id="loadingIndicator" class="loading-state">
+        <div class="spinner"></div>
+        <p>Đang tải danh mục sản phẩm...</p>
+      </div>
+
+      <!-- Empty State -->
+      <div id="emptyState" class="empty-state hidden">
+        <div class="empty-icon">🍃</div>
+        <h3>Không tìm thấy sản phẩm phù hợp</h3>
+        <p>Thử điều chỉnh từ khóa tìm kiếm hoặc đổi bộ lọc danh mục để tìm thấy sản phẩm mong muốn.</p>
+        <button id="btnResetFilters" class="btn btn-secondary">Đặt lại bộ lọc</button>
+      </div>
+
+      <!-- Grid View Container -->
+      <div id="productsGrid" class="products-grid"></div>
+
+      <!-- Table View Container -->
+      <div id="productsTableWrapper" class="table-wrapper hidden">
+        <table class="products-table">
+          <thead>
+            <tr>
+              <th>Hình ảnh</th>
+              <th>Tên sản phẩm</th>
+              <th>Danh mục</th>
+              <th>Đơn giá</th>
+              <th>Tồn kho</th>
+              <th>Trạng thái</th>
+              <th class="text-right">Thao tác</th>
+            </tr>
+          </thead>
+          <tbody id="productsTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <!-- Product Modal (Create & Edit) -->
+  <div id="productModal" class="modal-backdrop hidden">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <div class="modal-header-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 20h9"></path>
+              <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+            </svg>
+          </div>
+          <div>
+            <h3 id="modalTitle">Thêm Sản Phẩm Mới</h3>
+            <p class="modal-subtitle">Điền thông tin chi tiết về sản phẩm sinh thái</p>
+          </div>
+        </div>
+        <button id="btnCloseModal" class="btn-close">&times;</button>
+      </div>
+
+      <form id="productForm">
+        <input type="hidden" id="productId">
+
+        <div class="modal-body">
+          <div class="form-row">
+            <div class="form-group flex-2">
+              <label for="productName">Tên sản phẩm <span class="required">*</span></label>
+              <input type="text" id="productName" required placeholder="Ví dụ: Bột Trà Xanh Uji Hữu Cơ">
+            </div>
+
+            <div class="form-group flex-1">
+              <label for="productCategory">Danh mục <span class="required">*</span></label>
+              <select id="productCategory" required>
+                <option value="Trà & Thảo Mộc">Trà & Thảo Mộc</option>
+                <option value="Cây Cảnh Trong Nhà">Cây Cảnh Trong Nhà</option>
+                <option value="Mỹ Phẩm Hữu Cơ">Mỹ Phẩm Hữu Cơ</option>
+                <option value="Đồ Dùng Tự Nhiên">Đồ Dùng Tự Nhiên</option>
+                <option value="Khác">Khác</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group flex-1">
+              <label for="productPrice">Đơn giá (VNĐ) <span class="required">*</span></label>
+              <input type="number" id="productPrice" min="0" step="1000" required placeholder="250000">
+            </div>
+
+            <div class="form-group flex-1">
+              <label for="productStock">Số lượng tồn kho <span class="required">*</span></label>
+              <input type="number" id="productStock" min="0" step="1" required placeholder="20">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="productImageUrl">Link ảnh sản phẩm (URL)</label>
+            <div class="image-input-wrap">
+              <input type="url" id="productImageUrl" placeholder="https://images.unsplash.com/...">
+              <div class="preview-box">
+                <img id="imagePreview" src="" alt="Xem trước ảnh" class="hidden">
+                <span id="previewPlaceholder" class="preview-placeholder">Xem trước</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="productDescription">Mô tả sản phẩm</label>
+            <textarea id="productDescription" rows="3" placeholder="Mô tả nguồn gốc, thành phần tự nhiên, chứng nhận hữu cơ, công dụng..."></textarea>
+          </div>
+
+          <div class="form-group checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="productFeatured">
+              <span class="custom-checkbox"></span>
+              <span>Đánh dấu là <strong>Sản phẩm nổi bật</strong> (Hiển thị nhãn Featured)</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" id="btnCancelModal" class="btn btn-secondary">Hủy bỏ</button>
+          <button type="submit" id="btnSubmitModal" class="btn btn-primary">
+            <span class="btn-text">Lưu sản phẩm</span>
+            <div class="btn-spinner hidden"></div>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Delete Confirmation Modal -->
+  <div id="deleteModal" class="modal-backdrop hidden">
+    <div class="modal-dialog modal-dialog-sm">
+      <div class="delete-icon-wrap">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2">
+          <polyline points="3 6 5 6 21 6"></polyline>
+          <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+          <line x1="10" y1="11" x2="10" y2="17"></line>
+          <line x1="14" y1="11" x2="14" y2="17"></line>
+        </svg>
+      </div>
+      <h3>Xác nhận xóa sản phẩm</h3>
+      <p>Bạn có chắc chắn muốn xóa sản phẩm <strong id="deleteProductName">...</strong> không? Hành động này không thể khôi phục lại.</p>
+      <div class="modal-footer justify-center">
+        <button id="btnCancelDelete" class="btn btn-secondary">Giữ lại</button>
+        <button id="btnConfirmDelete" class="btn btn-danger">Xóa ngay</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Toast Notification Container -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>© 2026 GreenLeaf Shop. Crafted with pure Nature & Clean Code.</p>
+      <div class="footer-links">
+        <span>Backend REST API</span>
+        <span>•</span>
+        <span>Express v4</span>
+        <span>•</span>
+        <span>HTML & CSS Vanilla</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

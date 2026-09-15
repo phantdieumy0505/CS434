@@ -1,0 +1,110 @@
+[
+  {
+    "id": "prod-1789463297755",
+    "name": "Test Trà Búp Ô Long",
+    "category": "Trà & Thảo Mộc",
+    "price": 120000,
+    "stock": 10,
+    "description": "Trà thử nghiệm",
+    "imageUrl": "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=600&q=80",
+    "rating": 5,
+    "isFeatured": false,
+    "createdAt": "2026-09-15T09:08:17.755Z"
+  },
+  {
+    "id": "prod-1",
+    "name": "Bột Trà Xanh Matcha Uji Hữu Cơ",
+    "category": "Trà & Thảo Mộc",
+    "price": 285000,
+    "stock": 42,
+    "description": "Bột trà xanh nguyên chất thu hoạch thủ công từ đồi trà hữu cơ Uji Nhật Bản. Giàu chất chống oxy hóa EGCG và hương vị đậm đà thanh mát.",
+    "imageUrl": "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=600&q=80",
+    "rating": 4.9,
+    "isFeatured": true,
+    "createdAt": "2026-09-01T08:00:00.000Z"
+  },
+  {
+    "id": "prod-2",
+    "name": "Cây Trầu Bà Lá Xẻ Monstera Deliciosa",
+    "category": "Cây Cảnh Trong Nhà",
+    "price": 350000,
+    "stock": 15,
+    "description": "Cây kiểng lá nhiệt đới phong thủy với phiến lá xẻ độc đáo, thanh lọc không khí cực tốt và tô điểm không gian sống xanh hiện đại.",
+    "imageUrl": "https://images.unsplash.com/photo-1614594975525-e45190c55d0b?auto=format&fit=crop&w=600&q=80",
+    "rating": 4.8,
+    "isFeatured": true,
+    "createdAt": "2026-09-02T09:30:00.000Z"
+  },
+  {
+    "id": "prod-3",
+    "name": "Tinh Dầu Oải Hương Nguyên Chất (Lavender)",
+    "category": "Mỹ Phẩm Hữu Cơ",
+    "price": 195000,
+    "stock": 30,
+    "description": "Chiết xuất 100% từ hoa oải hương vùng Provence Pháp bằng công nghệ chưng cất hơi nước. Giúp thư giãn tinh thần, ngủ sâu và xua tan căng thẳng.",
+    "imageUrl": "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=600&q=80",
+    "rating": 4.7,
+    "isFeatured": false,
+    "createdAt": "2026-09-03T11:15:00.000Z"
+  },
+  {
+    "id": "prod-4",
+    "name": "Bộ Dao Thìa Nĩa Tre Tự Nhiên Kèm Túi Vải",
+    "category": "Đồ Dùng Tự Nhiên",
+    "price": 85000,
+    "stock": 68,
+    "description": "Bộ dụng cụ ăn uống tái sử dụng làm từ tre tự nhiên 100% không hóa chất tẩy trắng, thân thiện môi trường, nhỏ gọn tiện lợi mang đi làm và du lịch.",
+    "imageUrl": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=600&q=80",
+    "rating": 4.6,
+    "isFeatured": false,
+    "createdAt": "2026-09-04T14:20:00.000Z"
+  },
+  {
+    "id": "prod-5",
+    "name": "Gel Dưỡng Ẩm Nha Đam Lô Hội Tươi",
+    "category": "Mỹ Phẩm Hữu Cơ",
+    "price": 160000,
+    "stock": 25,
+    "description": "Chứa 99% gel lô hội hữu cơ lên men tự nhiên, làm dịu da cháy nắng tức thì, cấp ẩm sâu mà không gây nhờn dính, an toàn cho mọi loại da.",
+    "imageUrl": "https://images.unsplash.com/photo-1567928815116-f3bfa8ee16c8?auto=format&fit=crop&w=600&q=80",
+    "rating": 4.9,
+    "isFeatured": true,
+    "createdAt": "2026-09-05T10:00:00.000Z"
+  },
+  {
+    "id": "prod-6",
+    "name": "Cây Lưỡi Hổ Viền Vàng Mini Để Bàn",
+    "category": "Cây Cảnh Trong Nhà",
+    "price": 140000,
+    "stock": 8,
+    "description": "Cây cảnh mini dễ chăm sóc, chịu hạn tốt, có khả năng hút bức xạ máy tính và nhả oxy vào ban đêm, mang lại may mắn và bình an.",
+    "imageUrl": "https://images.unsplash.com/photo-1599685315640-9ceab2f58944?auto=format&fit=crop&w=600&q=80",
+    "rating": 4.5,
+    "isFeatured": false,
+    "createdAt": "2026-09-06T15:45:00.000Z"
+  },
+  {
+    "id": "prod-7",
+    "name": "Bình Giữ Nhiệt Vỏ Tre Khắc Họa Tiết Lá",
+    "category": "Đồ Dùng Tự Nhiên",
+    "price": 240000,
+    "stock": 0,
+    "description": "Lõi inox 304 cao cấp giữ nhiệt 12h kết hợp lớp vỏ tre tự nhiên tinh tế, có lưới lọc trà tiện lợi. Dung tích 450ml phong cách eco-life.",
+    "imageUrl": "https://images.unsplash.com/photo-1577705998148-6da4f3963bc8?auto=format&fit=crop&w=600&q=80",
+    "rating": 4.8,
+    "isFeatured": false,
+    "createdAt": "2026-09-07T08:30:00.000Z"
+  },
+  {
+    "id": "prod-8",
+    "name": "Trà Hoa Cúc Tiến Vua Sấy Lạnh Hữu Cơ",
+    "category": "Trà & Thảo Mộc",
+    "price": 175000,
+    "stock": 35,
+    "description": "Bông cúc nguyên vẹn sấy lạnh giữ trọn tinh dầu thơm dịu, thanh nhiệt giải độc, sáng mắt và mang lại giấc ngủ thư thái nhẹ nhàng.",
+    "imageUrl": "https://images.unsplash.com/photo-1597481499750-3e6b22637e12?auto=format&fit=crop&w=600&q=80",
+    "rating": 4.9,
+    "isFeatured": true,
+    "createdAt": "2026-09-08T12:00:00.000Z"
+  }
+]
